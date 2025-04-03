@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         AZURE_CREDENTIALS_ID = 'azure-service-principal'
-        RESOURCE_GROUP = 'MyResourcegroup1'
+        RESOURCE_GROUP = 'MyNewService_group'
         APP_SERVICE_NAME = 'MyNewService'
     }
 
