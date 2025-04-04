@@ -50,8 +50,8 @@ pipeline {
     agent any
     environment {
         AZURE_CREDENTIALS_ID = 'jenkins-terraform-sp'
-        RESOURCE_GROUP = 'jenkins-rg'
-        APP_SERVICE_NAME = 'jenkins-web-app123'
+        RESOURCE_GROUP = 'jenkins-palak-rg'
+        APP_SERVICE_NAME = 'jenkins-palak-app123'
     }
 
     stages {
