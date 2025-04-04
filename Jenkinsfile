@@ -2,15 +2,15 @@ pipeline {
     agent any
     environment {
         AZURE_CREDENTIALS_ID = 'jenkins-pipeline-sp'
-        RESOURCE_GROUP = 'webservicerg'
-        APP_SERVICE_NAME = 'yashsumannWebApp01'
+        RESOURCE_GROUP = 'WebServiceRG'
+        APP_SERVICE_NAME = 'AgarwalWebApp12'
         TF_WORKING_DIR='.'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/Yashsuman04/WebApiJenkins.git'
+                git branch: 'master', url: 'https://github.com/dipeshagarwaaal/WebApiJenkins.git'
             }
         }
          stage('Terraform Init') {
