@@ -3,7 +3,7 @@ pipeline {
     environment {
         AZURE_CREDENTIALS_ID = 'jenkins-pipeline-sp'
         RESOURCE_GROUP = 'MyNewService_group'
-        APP_SERVICE_NAME = 'AgarwalWebApp12'
+        APP_SERVICE_NAME = 'MyNewService'
     }
 
     stages {
