@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AZURE_CREDENTIALS_ID = 'jenkins-pipeline-sp'
+        AZURE_CREDENTIALS_ID = 'jenkins-pipeline'
         RESOURCE_GROUP = 'MyTerraformRg'
         APP_SERVICE_NAME = 'example-webapp-palak'
     }
