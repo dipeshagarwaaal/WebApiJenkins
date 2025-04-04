@@ -1,21 +1,23 @@
 provider "azurerm" {
   features {}
 
-  client_id       = "2fb998ec-1f1d-4682-b420-94fb5ee1aeac"
-  client_secret   = ".TJ8Q~qsn1iL-aMK1SLwGjtpKR~_ECVrGk_1Qb5W"
-  tenant_id       = "1a7c998d-d7c1-4821-9e89-e43b6077ecea"
-  subscription_id = "e5128466-7604-4126-8601-6727d13dbe7e"
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
+  subscription_id = var.subscription_id
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "jenkins-rg"
-  location = "East US"
+# Resource Group
+resource "azurerm_resource_group" "rg" {
+  name     = var.resource_group_name
+  location = var.location
 }
 
-resource "azurerm_app_service_plan" "example" {
-  name                = "jenkins-service-plan"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+# App Service Plan
+resource "azurerm_app_service_plan" "plan" {
+  name                = var.app_service_plan_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
 
   sku {
     tier = "Basic"
@@ -23,11 +25,12 @@ resource "azurerm_app_service_plan" "example" {
   }
 }
 
-resource "azurerm_app_service" "example" {
-  name                = "jenkins-web-app123"  # Must be globally unique
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  app_service_plan_id = azurerm_app_service_plan.example.id
+# App Service (Web App)
+resource "azurerm_app_service" "app" {
+  name                = var.app_service_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  app_service_plan_id = azurerm_app_service_plan.plan.id
 
   site_config {
     always_on = true
