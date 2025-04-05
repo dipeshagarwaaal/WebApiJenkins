@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         AZURE_CREDENTIALS_ID = 'jenkins-pipeline-sp'
-        RESOURCE_GROUP = 'WebServiceResource'
-        APP_SERVICE_NAME = 'AgarwalWebApp129012'
+        RESOURCE_GROUP = 'WebServiceResourceforReactProject'
+        APP_SERVICE_NAME = 'AgarwalReactWebApp'
         TF_WORKING_DIR='.'
     }
 
@@ -58,9 +58,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'dotnet restore'
-                bat 'dotnet build --configuration Release'
-                bat 'dotnet publish -c Release -o ./publish'
+                bat 'npm install'
+                bat 'npm run build'
             }
         }
 
@@ -68,8 +67,8 @@ pipeline {
     steps {
         withCredentials([azureServicePrincipal(credentialsId: AZURE_CREDENTIALS_ID)]) {
             bat """
-            powershell Compress-Archive -Path ./publish/* -DestinationPath ./publish.zip -Force
-            az webapp deploy --resource-group %RESOURCE_GROUP% --name %APP_SERVICE_NAME% --src-path ./publish.zip --type zip
+            powershell Compress-Archive -Path build/* -DestinationPath build.zip -Force
+            az webapp deploy --resource-group %RESOURCE_GROUP% --name %APP_SERVICE_NAME% --src-path build.zip --type zip
             """
         }
     }
