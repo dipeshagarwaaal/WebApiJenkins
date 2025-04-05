@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         AZURE_CREDENTIALS_ID = 'jenkins-pipeline-sp'
-        RESOURCE_GROUP = 'WebServiceResource'
-        APP_SERVICE_NAME = 'AgarwalWebApp129012'
+        RESOURCE_GROUP = 'WebServiceResourceFOrJenkins'
+        APP_SERVICE_NAME = 'MyJekinsAutomation_without_Terraform'
         TF_WORKING_DIR='.'
     }
 
