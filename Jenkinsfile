@@ -3,7 +3,7 @@ pipeline {
     environment {
         AZURE_CREDENTIALS_ID = 'jenkins-pipeline-sp'
         RESOURCE_GROUP = 'WebServiceResourceFOrJenkins'
-        APP_SERVICE_NAME = 'MyJekinsAutomation_without_Terraform'
+        APP_SERVICE_NAME = 'MyJekinsAutomationwithoutTerraform'
         
     }
 
